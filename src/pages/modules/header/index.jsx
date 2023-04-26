@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import crypto from './logo.png'
 import './Header.css'
+import { useNavigate } from "react-router-dom";
+
 
 const Header = () => {
 
     const LnkStyle = "hover:bg-hoverBg rounded-[10px] py-1 px-4 active:bg-activeBg";
+    const navigate = useNavigate();
+
+    const clickTable = (broker) => { /*  */
+        navigate(`/brokers/${broker}`);
+    }
 
     return (
         <>
@@ -16,6 +23,8 @@ const Header = () => {
                             <p className='text-center text-[22px] font-[600]'>NotNull Company</p>
                         </div>
                         <Link to="/" className={LnkStyle}>Главная</Link>
+                        <Link to="/test1" className={LnkStyle}>Эээксперименты</Link>
+                        <Link to="/test2" className={LnkStyle}>Боба</Link>
                         <Link to="/about" className={LnkStyle}>О нас</Link>
                     </div>
                 </div>
@@ -28,9 +37,23 @@ const Header = () => {
                         <div className="spinner diagonal part-2"></div>
                     </label>
                     <div id='sidebarMenu' className='bg-gradient-to-br from-white-40 to-white-10 backdrop-blur-md'> {/* то, что будет появляться */}
-                        <div className='p-4 pt-20 mx-auto text-white grid grid-flow-row content-evenly text-center text-4xl h-full'>
-                            <Link to="/" className="tracking-widest  text-gray-100 font-light">Главная</Link>
+                        <div className='p-4 pt-20 mx-auto text-white grid grid-flow-row content-evenly text-center text-2xl h-full'>
+                            <Link to="/" className="tracking-widest  text-gray-100 font-light">Главная</Link>                           
+                            <Link to="/test1" className="tracking-widest  text-gray-100 font-light">Эээксперименты</Link>
+                            <Link to="/test2" className="tracking-widest  text-gray-100 font-light">Боба</Link>
                             <Link to="/about" className="tracking-widest  text-gray-100 font-light">О нас</Link>
+                            <div>
+                                <p className="my-2">Брокеры</p>
+                                <hr className="mx-3" />
+                            </div>
+                            <div
+                                className="tracking-widest  text-gray-100 font-light"
+                                onClick={() => clickTable("Sber")}
+                            >Sber</div>
+                            <div
+                                className="tracking-widest  text-gray-100 font-light"
+                                onClick={() => clickTable("Tinkoff")}
+                            >Tinkoff</div>
                         </div>
                     </div>
                 </div>
