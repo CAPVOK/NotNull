@@ -11,11 +11,12 @@ const Header = () => {
             <div className="container lg:px-8 mx-auto text-headerLinks mt-2 sm:mt-7 text-[22px] font-semibold">
                 <div className='hidden sm:block'>
                     <div className='flex space-x-2 place-items-center'>
-                        <div className="flex space-x-2 text-white bg-white/30 py-1 px-4 rounded-[10px]">
-                            <img src={crypto} className="h-[30px]" alt="логотип" />
-                            <p className='text-center text-[22px] font-[600]'>NotNull Company</p>
-                        </div>
-                        <Link to="/" className={LnkStyle}>Главная</Link>
+                        <Link to="/">
+                            <div className="flex space-x-2 text-white bg-white/20 hover:bg-white/30 active:bg-white/40 py-1 px-4 rounded-[10px]">
+                                <img src={crypto} className="h-[30px]" alt="логотип" />
+                                <p className='text-center text-[22px] font-[600]'>NotNull Company</p>
+                            </div>
+                        </Link>
                         <Link to="/about" className={LnkStyle}>О нас</Link>
                     </div>
                 </div>
