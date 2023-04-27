@@ -25,9 +25,11 @@ export const Main = () => {
         stompClient.current = over(new SockJS('http://localhost:8888/ws'));
         stompClient.current.connect({}, onConnected, onError); 
 
-        return () => { // выполняется при размонтировании компонента
-            stompClient.current && stompClient.current.disconnect();
-        };
+        return () => {
+            if (stompClient.current && stompClient.current.connected) {
+              stompClient.current.disconnect();
+            }
+          };
     }, []);
 
     return (
