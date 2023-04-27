@@ -10,7 +10,7 @@ export const Main = () => {
     const stompClient = useRef(null);
     const onConnected =()=>{ // подключаемся)))
         console.log('WS connected');
-        stompClient.current.subscribe('/newHandshake', chatMessages);
+        stompClient.current.subscribe('/connect/newHandshake', chatMessages);
         setConnection(true);
     };
 
