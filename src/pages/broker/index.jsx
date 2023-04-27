@@ -1,10 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { Accordion } from "../modules/components/accordion";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export const Broker = () => {
+    const request = useSelector((state)=>state.request.request)
     const brokerName = useParams().broker;
     const navigate = useNavigate();
+
+    console.log(request);
 
     return (
         <>

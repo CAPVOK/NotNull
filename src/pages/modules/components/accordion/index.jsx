@@ -46,9 +46,9 @@ export const Accordion = () => {
                         <div className="flex flex-col">
                             <div className="container flex flex-col">
                                 {
-                                    inputs.map((data) => {
+                                    inputs.map((data, key) => {
                                         return (
-                                            <>
+                                            <div key={key}>
                                                 <p className="m-1 rounded">{data.name}</p>
                                                 <div className="grid grid-cols-3 gap-x-4 w-full">
                                                     <input
@@ -59,7 +59,7 @@ export const Accordion = () => {
                                                     ></input>
                                                     <p className="col-span-2">{data.description}</p>
                                                 </div>
-                                            </>
+                                            </div>
                                         )
                                     })
                                 }
