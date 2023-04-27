@@ -32,6 +32,7 @@ module.exports = {
       },
       animation: {
         'appearanceInp': 'ani 1.5s forwards',
+        'spin-slow': 'spin 5s linear infinite',
       },
       keyframes: {
         ani: {

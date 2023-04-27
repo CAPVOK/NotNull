@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import { Accordion } from "../modules/components/accordion";
 
 export const Broker = () => {
     const brokerName = useParams().broker;
@@ -23,8 +24,13 @@ export const Broker = () => {
                     <div className="mx-5">{brokerName}</div>
                     <div className="mx-5">Status: Undefainded</div>
                 </div>
-                <div className="h-[800px] border border-white p-3 text-xl text-white">
-                    Any funcs
+                <div className="flex flex-col  min-h-screen border border-white p-3 text-xl text-white">
+                    <Accordion />  
+                    <Accordion />
+                    <Accordion />
+                    <Accordion />  
+                    <Accordion />
+                    <Accordion />
                 </div>
             </div>
         </>
