@@ -17,26 +17,34 @@ export const AboutUs = () => {
                             </div>
                         </div>
                         <div className="-mt-2 relative">
-                            <p className="text-white text-xl 2xl:text-2xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2">
-                                I received a job offer mid-course, and the subjects I learned were current, if not more so, 
-                                in the company I joined. I honestly feel I got every penny’s worth.</p>
+                            <ul className="list-disc text-white 2xl:text-2xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2">
+                                <li>Реализация Backend части на Java Spring</li>
+                                <li>Многопоточное соединение Сервисов Би используя Socket</li>
+                                <li>Связь с React по WebSocket</li>
+                                <li>Создание БД на PostgreSQL</li>
+                                <li>Связь HTTP и TCP</li>
+                                <li>Логирование исключений</li>
+                            </ul>
                             <br />
                         </div>
                     </div>
 
                     {/* Каримов */}
-                    <div className="bg-indigo-600 lg:order-2 lg:row-span-1 lg:col-span-5 rounded-lg shadow-xl mb-5 lg:mb-0">
+                    <div className="bg-indigo-600 lg:order-1 lg:row-span-1 lg:col-span-5 rounded-lg shadow-xl mb-5 lg:mb-0">
                         <div className="mx-6 my-8 2xl:mx-10 flex flex-row items-center">
-                            <div className="bg-cover bg-center w-20 h-20 lg:w-32 lg:h-32 rounded-full border-2 ml-3" style={{backgroundImage: 'url(/amon.jpg)'}}></div>
+                            <div className="bg-cover w-20 h-20 lg:w-32 lg:h-32 rounded-full border-2 ml-3" style={{backgroundImage: 'url(/amon.jpg)'}}></div>
                             <div className="flex flex-col ml-4">
                                 <h1 className="text-white text-xl lg:text-2xl ">Каримов Амонулло</h1>
                                 <h2 className="text-white text-opacity-50 text-base ">Frontend</h2>
                             </div>
                         </div>
                         <div className="-mt-2 relative">
-                            <p className="text-white text-xl 2xl:text-2xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2">
-                                I received a job offer mid-course, and the subjects I learned were current, if not more so, 
-                                in the company I joined. I honestly feel I got every penny’s worth.</p>
+                            <ul className="list-disc text-white 2xl:text-2xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2">
+                                <li>Написание основной логики приложения</li>
+                                <li>Настройка stomp-websocket</li>
+                                <li>Дизайн проекта</li>
+                                <li>Написание компонентов</li>
+                            </ul>
                             <br />
                         </div>
                     </div>
@@ -51,9 +59,11 @@ export const AboutUs = () => {
                             </div>
                         </div>
                         <div className="-mt-2 relative">
-                            <p className="text-white text-xl 2xl:text-2xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2">
-                                I received a job offer mid-course, and the subjects I learned were current, if not more so, 
-                                in the company I joined. I honestly feel I got every penny’s worth.</p>
+                            <ul className="list-disc text-white 2xl:text-2xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2">
+                                <li>Реализация state manager через Redux toolkit</li>
+                                <li>Настройка stomp-websocket</li>
+                                <li>Дизайн проекта</li>
+                            </ul>
                             <br />
                         </div>
                     </div>
@@ -68,9 +78,11 @@ export const AboutUs = () => {
                             </div>
                         </div>
                         <div className="-mt-2 relative">
-                            <p className="text-white text-xl 2xl:text-2xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2">
-                                I received a job offer mid-course, and the subjects I learned were current, if not more so, 
-                                in the company I joined. I honestly feel I got every penny’s worth.</p>
+                            <ul className="list-disc text-white 2xl:text-2xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2">
+                                <li>Дизайн проекта</li>
+                                <li>Написание компонентов</li>
+                                <li>Поддержание командного духа!</li>
+                            </ul>
                             <br />
                         </div>
                     </div>
