@@ -1,4 +1,26 @@
+import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
+import { useState } from "react";
 export const Accordion = () =>{
+    const [state, setState] = useState([]);
+
+    // map - (тип инпута, его дефолтное значение, его описание)
+    let inputs = [
+        ['text', 'input-1', 'description ghhgjgjhg dfsfd sjkahdkjshadkjshkjahdjkhs'],
+        ['text', 'input-2', 'description ghhgjgjhg sjkahdkjshadkjshkjahdjkhs'],
+        ['text', 'input-3', 'description ghhgjgjhg ghjfjfghfjfjh sjkahdkjshadkjshkjahdjkhs'],
+    ];
+    const handleSubmitForm = (event) => {event.preventDefault();}
+
+    const onSubmit = (inputs, inputsState, event) => {
+        event.preventDefault();
+        for(let i=0; i<inputs.length; i++){
+            if(inputs[i][1] !== inputsState[i]){
+                inputs[i][1] = inputsState[i];
+            }
+        }
+        console.log(inputs);
+    }
+    const [inputsState, setInputsState] = useState([]);
 
     return(
         <>
@@ -14,28 +36,47 @@ export const Accordion = () =>{
                         </svg>
 
                         <div className="container self-center bg-gray-700 max-h-0 peer-checked:max-h-screen rounded px-20">
-                            <form className="flex flex-col">
+                            <form className="flex flex-col" onSubmit={onSubmit}>
                                 <div className="container flex flex-col">
+                                    {/* {inputs.map((input, index) => (
+                                        <>
+                                            <p className="m-1 rounded">{input[1]}</p>
+                                            <div className="grid grid-cols-3 gap-x-4 w-full">
+                                                <input type={input[0]} className="rounded max-h-6 self-center justify-self-start w-full text-black"
+                                                    onChange={(e) =>setInputsState({...inputsState, [index]: e.target.value})} 
+                                                    value={inputsState[index]} 
+                                                ></input>
+                                                <p className="col-span-2">{input[2]}</p>
+                                            </div>
+                                        </>
+                                    ))} */}
+
                                     <p className="m-1 rounded">input-1</p>
                                     <div className="grid grid-cols-3 gap-x-4 w-full">
-                                        <input type="text" className="rounded max-h-6 self-center justify-self-start w-full"></input>
+                                        <input type="text" className="rounded max-h-6 self-center justify-self-start w-full"
+                                            onChange={(e) => setState(e.target.value)} value={state}
+                                        ></input>
                                         <p className="col-span-2">description ghhgjgjhg ghjfjfghfjfjh sjkahdkjshadkjshkjahdjkhs</p>
                                     </div>
                                     <p className="m-1">input-2</p>
                                     <div className="grid grid-cols-3 gap-x-4 w-full">
-                                        <input type="text" className="rounded max-h-6 self-center justify-self-start w-full"></input>
+                                        <input type="text" className="rounded max-h-6 self-center justify-self-start w-full"
+                                        
+                                        ></input>
                                         <p className="col-span-2">description ghhgjgjhg ghjfjfghfjfjh sjkahdkjshadkjshkjahdjkhs</p>
                                     </div>
                                     <p className="m-1">input-3</p>
                                     <div className="grid grid-cols-3 gap-x-4 w-full">
                                         <input type="text" className="rounded max-h-6 self-center justify-self-start w-full"></input>
-                                        <p className="col-span-2">description ghhgjgjhg </p>
+                                        <p className="col-span-2">description ghhgjgjhg</p>
                                     </div>
                                 </div>
                                 <br/>
                                 <div className="flex justify-between mx-7 my-3">
                                     <p className="m-1 inline-block">success/fail</p>
-                                    <button className="border rounded inline-block" type="submit">Submit</button>
+                                    <button className="border rounded inline-block"
+                            
+                                    >Submit</button>
                                 </div>
                             </form>
                             <hr/>
