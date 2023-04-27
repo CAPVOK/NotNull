@@ -15,9 +15,9 @@ export const Main = () => {
     };
 
     const chatMessages = (payload) => { // слушаем сервер и добавляем в chatHistory
-        console.log("getmessage");
-        const payloadData = JSON.parse(payload.body);
-        console.log(payloadData);     
+        const payloadData = JSON.parse(JSON.parse(payload.body));
+        /* console.log(payloadData["header"]); */  
+        console.log(payloadData.request);   
     }; 
 
     const onError =()=>{ // ничего не работает 
@@ -29,7 +29,7 @@ export const Main = () => {
 
     const WsConnect=()=>{ // угадай по названию 
         stompClient.current = over(new SockJS('http://localhost:8085/ws'));
-        stompClient.current.connect({}, onConnected, onError); 
+        stompClient.current.connect({}, onConnected, onError);
 
     };
     const sendMessage=()=>{ // угадай по названию 
