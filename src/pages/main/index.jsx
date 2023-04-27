@@ -14,11 +14,26 @@ export const Main = () => {
     };
 
     const chatMessages = (payload) => { // слушаем сервер и добавляем в chatHistory
-        console.log(payload);      
+        const payloadData = JSON.parse(payload.body);
+        console.log(payloadData);      
     }; 
 
     const onError =()=>{ // ничего не работает 
         console.log('WS error');
+    };
+
+    const currentMessage = "hello";
+
+    const sendMessage=()=>{ // угадай по названию 
+        if(stompClient.current !== null) {
+            if (currentMessage.trim() !== "") {
+                const newDate = new Date();
+                const newMessage = {
+                  message: currentMessage.trim(),
+                };
+                stompClient.current.send("/app/messageForHandshake", {}, JSON.stringify(newMessage));
+            }
+        }
     };
 
     useEffect(() => { //подключаемся / отключаемся
@@ -42,6 +57,10 @@ export const Main = () => {
                         <p className='text-center text-3xl font-[600] py-5'>NotNull Company</p>
                         <img className="animate-spin-slow" src={logo} alt="logo" />
                     </div>
+                    <button
+                        className="rounded bg-white/20"
+                        onClick={sendMessage}
+                    >Send</button>
                 </div>
             </div>
         </div>
