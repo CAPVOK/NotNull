@@ -9,16 +9,9 @@ export const Accordion = () =>{
         ['text', 'input-2', 'description ghhgjgjhg sjkahdkjshadkjshkjahdjkhs'],
         ['text', 'input-3', 'description ghhgjgjhg ghjfjfghfjfjh sjkahdkjshadkjshkjahdjkhs'],
     ];
-    const handleSubmitForm = (event) => {event.preventDefault();}
 
-    const Send = (inputs, inputsState, event) => {
-        /* event.preventDefault();
-        for(let i=0; i<inputs.length; i++){
-            if(inputs[i][1] !== inputsState[i]){
-                inputs[i][1] = inputsState[i];
-            }
-        }
-        console.log(inputs); */
+    const Send = () => {
+        
     }
     const [inputsState, setInputsState] = useState([]);
 
@@ -75,7 +68,7 @@ export const Accordion = () =>{
                                 <div className="flex justify-between mx-7 my-3">
                                     <p className="m-1 inline-block">success/fail</p>
                                     <button 
-                                        className="border rounded inline-block py-1 px-4 focus:bg-white/20"
+                                        className="border rounded inline-block py-1 px-4 active:bg-white/30 hover:bg-white/20"
                                         onClick={Send}
                                     >Send</button>
                                 </div>

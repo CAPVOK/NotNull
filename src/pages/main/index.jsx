@@ -22,7 +22,7 @@ export const Main = () => {
     };
 
     useEffect(() => { //подключаемся / отключаемся
-        stompClient.current = over(new SockJS('http://localhost:8888/ws'));
+        stompClient.current = over(new SockJS('http://localhost:8085/ws'));
         stompClient.current.connect({}, onConnected, onError); 
 
         return () => {
