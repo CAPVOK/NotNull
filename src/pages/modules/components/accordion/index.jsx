@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useSelector } from "react-redux";
 
-export const Accordion = ({ id } /* ,commandAlias ,commandCaption ,commandDescription */) => {
+export const Accordion = ({ id, sender } /* ,commandAlias ,commandCaption ,commandDescription */) => {
     
     const [showInputs, setShowInputs] = useState(false);
 
     const request = useSelector((state) => {
-        return state.request.request.request.supportedCommands.find((item) => 
-            item.alias == id
+        return state.request.requests.find((item) => item.header.sender === sender)
+        .request.supportedCommands.find((item) => 
+            item.alias === id
         )
     })
 

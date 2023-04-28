@@ -18,7 +18,7 @@ const Header = () => {
         navigate(`/brokers/${broker}`);
     }
 
-    const request = useSelector((state) => state.request.request);
+    const requests = useSelector((state) => state.request.requests);
 
     return (
         <>
@@ -58,10 +58,10 @@ const Header = () => {
                             <Link to="/" className="tracking-widest  text-gray-100 font-normal">Главная</Link>
                             <Link to="/about" className="tracking-widest  text-gray-100 font-normal">О нас</Link>
                             <div className="tracking-widest border-gray-100 text-gray-100 font-thin">Сервисы БИ:</div>
-                            {(request !== -1) && <div
+                            {(requests?.length > 0) && <div
                                 className="tracking-widest  text-gray-100 font-light"
-                                onClick={() => clickTable(request.header.sender)}
-                            >{request.header.sender}</div>}
+                                onClick={() => clickTable(requests[0].header.sender)}
+                            >{requests[0].header.sender}</div>}
                         </div>
                     </div>
                 </div>

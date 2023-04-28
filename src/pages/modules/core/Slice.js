@@ -3,13 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 export const profileSlice = createSlice({
     name: 'profile',
     initialState: {
-        request: -1
+        requests: [],
+        isConnected: false,
+        stompClient: null,
     },
     reducers: {
-        saveRequest: (state, action) => {state.request = action.payload},
+        saveConnect: (state, action) => {state.isConnected = action.payload},
+        saveStompClient: (state, action) => {state.stompClient = action.payload},
+        saveRequests: (state, action) => {
+            state.requests.push(action.payload)
+        },
+        cleanRequests: (state) => {state.requests = []},
     }
 })
 
-export const {saveRequest} = profileSlice.actions
+export const { saveConnect, saveStompClient, saveRequests, cleanRequests} = profileSlice.actions
 
 export default profileSlice.reducer

@@ -4,9 +4,16 @@ import { Accordion } from "../modules/components/accordion";
 import { useSelector } from "react-redux";
 
 export const Broker = () => {
-    const request = useSelector((state) => state.request.request)
     const brokerName = useParams().broker;
+    const request = useSelector((state) => {
+        return state.request.requests.find((item)=>
+            item.header.sender === brokerName
+        )
+    })
     const navigate = useNavigate();
+    
+    console.log(brokerName);
+    console.log(request);
 
     return (
         <>
@@ -28,10 +35,11 @@ export const Broker = () => {
                 </div>
                 <div className="flex flex-col min-h-screen p-3 text-xl text-white">
                 {
-                    request.request && 
+                    
+                    request && 
                     request.request.supportedCommands.map((command, key) => {
                         return (
-                            <Accordion key={key} id={command.alias} />
+                            <Accordion key={key} id={command.alias} sender={brokerName}/>
                         )
                     })
                 }

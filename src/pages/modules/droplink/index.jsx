@@ -4,7 +4,7 @@ import { api } from '../core/api';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { saveRequest } from '../core/Slice';
+import { cleanRequests } from '../core/Slice';
 
 
 export default function DropLink() {
@@ -19,7 +19,7 @@ export default function DropLink() {
         removeCookie('sessionId', { path: '/', sameSite: 'Lax' });
         removeCookie('username', { path: '/', sameSite: 'Lax' });
         navigate('/', { replace: true });
-        dispatch(saveRequest(-1));
+        dispatch(cleanRequests());
       }
     });
   }
