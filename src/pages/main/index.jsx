@@ -4,108 +4,48 @@ import logo from "../modules/components/img/crypto.png"
 import { useEffect, useRef, useState } from "react";
 import { over } from 'stompjs';
 import SockJS from 'sockjs-client';
+import { saveRequest } from "../modules/core/Slice";
+import { useDispatch, useSelector } from "react-redux";
+import { useCookies } from 'react-cookie';
 
 export const Main = () => {
-    const [connection, setConnection] = useState(false); // подключены ли мы 
+    const request = useSelector((state) => state.request.request);
+    const dispatch = useDispatch();
+    const [cookies, ] = useCookies(['username', 'sessionId']);
 
-    const [payloadData, setPayloadData] = useState(
-        {
-            header: {
-                messageNum: "",
-                timestamp: "",
-                sender: "",
-                receiver: "",
-                messageNumAnswer: ""
-            },
-            request: {
-                supportedCommands: [
-                    {
-                        alias: "",
-                        caption: "",
-                        description: "",
-                        parameters: [
-                            {
-                                alias: "",
-                                caption: "",
-                                hint: "",
-                                value: {
-                                    dataType: [],
-                                    format: "",
-                                    value: ""
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    );
 
     const stompClient = useRef(null);
     const onConnected = () => { // подключаемся)))
         console.log('WS connected');
         stompClient.current.subscribe('/connect/newHandshake', chatMessages);
-        setConnection(true);
     };
 
     const chatMessages = (payload) => { // слушаем сервер 
         const Data = JSON.parse(JSON.parse(payload.body));
-        /* setPayloadData(prevState => ({
-            ...prevState, // копируем все значения из предыдущего состояния
-            header: {
-                ...prevState.header, // копируем все значения из предыдущего объекта header
-                messageNum: Data.header.messageNum, // устанавливаем новое значение messageNum
-                timestamp: Data.header.timestamp, // устанавливаем новое значение timestamp
-                sender: Data.header.sender, // устанавливаем новое значение sender
-                receiver: Data.header.receiver, // устанавливаем новое значение receiver
-                messageNumAnswer: Data.header.messageNumAnswer // устанавливаем новое значение messageNumAnswer
-            },
-            request: {
-                ...prevState.request, // копируем все значения из предыдущего объекта request
-                supportedCommands: [...prevState.request.supportedCommands, 
-                    {
-                        alias: prevState.request.supportedCommands.alias,
-                        caption: prevState.request.supportedCommands.caption,
-                        description: "",
-                        parameters: [
-                            {
-                                alias: "",
-                                caption: "",
-                                hint: "",
-                                value: {
-                                    dataType: [],
-                                    format: "",
-                                    value: ""
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        })); */
-        setPayloadData(Data);
+        dispatch(saveRequest(Data));
+        console.log(Data);
     };
 
     const onError = () => {
         console.log('WS error');
-        setConnection(false);
     };
 
     const currentMessage = "hello";
 
     const WsConnect = () => {
-        stompClient.current = over(new SockJS('http://localhost:8085/ws'));
-        stompClient.current.connect({}, onConnected, onError);
+        if (cookies.sessionId){
+            stompClient.current = over(new SockJS('http://localhost:8085/ws'));
+            stompClient.current.connect({}, onConnected, onError);
+        } else alert("Сначала пройдите авторизацию!");
     };
     const sendMessage = () => {
         if (stompClient.current !== null) {
-            if (currentMessage.trim() !== "") {
-                const newDate = new Date();
+            if (currentMessage !== "") {
                 const newMessage = {
-                    message: currentMessage.trim(),
+                    message: currentMessage,
                 };
                 stompClient.current.send("/app/messageForHandshake", {}, JSON.stringify(newMessage));
-            }
+            } else console.log('Empty')
         }
     };
     /* ------------------------------------------------------- */
@@ -120,14 +60,14 @@ export const Main = () => {
 
     return (
         <div className="flex ">
-            {connection && <SideBar data={payloadData} />}
+            {true && <SideBar />}
             <div className=" mx-1 w-full">
                 <Header />
-                <div className='grid grid-rows-1 gap-4 justify-center h-[865px] text-white mb-5 p-5 mt-16 sm:mt-5'>
+                <div className='grid grid-rows-1 gap-4 justify-center h-screen text-white mb-5 p-5 mt-16 sm:mt-5'>
                     <div className="mt-[50px]">
                         <p className='text-center text-3xl font-[600] py-5'>NotNull Company</p>
                         <img className="animate-spin-slow" src={logo} alt="logo" />
-                        {!connection &&
+                        {!(request !== -1) &&
                             <div className="flex justify-center my-7">
                                 <button
                                     className="rounded bg-white/20 py-2 px-4 w-2/3"
@@ -135,6 +75,12 @@ export const Main = () => {
                                 >Начать</button>
                             </div>
                         }
+                        {/* <div className="flex justify-center my-7">
+                            <button
+                                className="rounded bg-white/20 py-2 px-4 w-2/3"
+                                onClick={sendMessage}
+                            >Отправить</button>
+                        </div> */}
                     </div>
                 </div>
             </div>

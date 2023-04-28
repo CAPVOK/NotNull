@@ -1,64 +1,73 @@
 import { useState } from 'react';
+import { useSelector } from "react-redux";
 
-export const Accordion = () => {
+export const Accordion = ({ id } /* ,commandAlias ,commandCaption ,commandDescription */) => {
+    const request = useSelector((state) => state.request.request.request.supportedCommands[Number(id) - 1])
     const [showInputs, setShowInputs] = useState(false);
-    // map - (тип инпута, его дефолтное значение, его описание)
-    const inputs = [
-        {
-            type: 'text',
-            name: 'input-1',
-            description: 'description ghhgjgjhg dfsfd sjkahdkjshadkjsh kjahdjkhs jkahdkjshadkjshkj ahdjkhs',
-            defaulValue: "null"
-        },
-        {
-            type: 'text',
-            name: 'input-2',
-            description: 'description ghhgjgjhg dfsfd sjkahdkjshadkjs hkjahdjkhs ghhgjgjhg dfsfd sjkahdkjsh adkjshkjahdjkhs',
-            defaulValue: "null"
-        },
-        {
-            type: 'text',
-            name: 'input-3',
-            description: 'description ghhgjgjhg dfsfd sjkahdkjsh adkjshkjahdjkhs',
-            defaulValue: "null"
-        },
-    ];
-
     const toggleInputs = () => {
         setShowInputs(!showInputs);
     }
 
-    const Send = () => {
+    function Send() {
+        // Получаем список всех инпутов на странице
+        const inputs = document.getElementsByTagName("input");
 
+        // Создаем пустой объект для хранения данных полей
+        const data = [];
+
+        // Проходимся по каждому инпуту и добавляем его значение в объект данных
+        for (let i = 0; i < inputs.length; i++) {
+            const input = inputs[i];
+            data[i] = {
+                type: input.type,
+                value: input.value
+            }
+        }
+
+        // Выводим объект данных на консоль
+        console.log(JSON.stringify(data));
+    }
+
+    const dataType = (key) => {
+        switch (key) {
+            case "dtBoolean": return "checkbox";
+            case "dtInteger": return "number";
+            case "dtFloat": return "number";
+            case "dtDateTime": return "date";
+            default: return "text";
+        }
     }
 
     return (
         <>
-            <div className=" md:w-2/3 mx-auto mt-4 text-white">
-                <div className="border-t bg-slate-500 rounded">
-                    <p
-                        className="p-5 cursor-pointer inline-block w-11/12"
-                        onClick={toggleInputs}
-                    >function one</p>
+            <div className="w-full mx-auto mt-4 text-white">
+                <div
+                    onClick={toggleInputs}
+                    className="border-t bg-slate-500 rounded flex space-x-5 p-5 cursor-pointer w-11/12"
+                >
+                    <p>{request.alias}</p>
+                    <p>{request.caption}</p>
+                    <p>{request.description}</p>
                 </div>
                 {showInputs &&
                     <div className=" bg-gray-700 rounded px-20">
                         <div className="flex flex-col">
                             <div className="container flex flex-col">
                                 {
-                                    inputs.map((data, key) => {
+                                    request.parameters.map((data, key) => {
+                                        const inputType = dataType(data.value.dataType);
                                         return (
                                             <div key={key}>
-                                                <p className="m-1 rounded">{data.name}</p>
+                                                <p className="m-1 rounded">{data.caption}</p>
                                                 <div className="grid grid-cols-3 gap-x-4 w-full">
                                                     <input
-                                                        type={data.type}
-                                                        className="rounded max-h-6 self-center justify-self-start w-full"
-                                                        /* onChange={(e) => setState(e.target.value)} */
-                                                        defaultValue={data.defaulValue}
+                                                        type={inputType}
+                                                        className="rounded max-h-6 self-center justify-self-start w-full text-black"
+                                                    /* onChange={} */
                                                     ></input>
-                                                    <p className="col-span-2">{data.description}</p>
+                                                    <p className="col-span-2">{data.hint}</p>
                                                 </div>
+
                                             </div>
                                         )
                                     })

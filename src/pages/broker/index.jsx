@@ -2,14 +2,11 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { Accordion } from "../modules/components/accordion";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 export const Broker = () => {
-    const request = useSelector((state)=>state.request.request)
+    const request = useSelector((state) => state.request.request)
     const brokerName = useParams().broker;
     const navigate = useNavigate();
-
-    console.log(request);
 
     return (
         <>
@@ -22,7 +19,7 @@ export const Broker = () => {
                         strokeWidth="1.5"
                         stroke="currentColor"
                         className=" fixed left-[20px] w-6 h-6 cursor-pointer"
-                        onClick={()=>navigate(-1)}
+                        onClick={() => navigate(-1)}
                     >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                     </svg>
@@ -30,12 +27,11 @@ export const Broker = () => {
                     <div className="mx-5">Status: Undefainded</div>
                 </div>
                 <div className="flex flex-col  min-h-screen border border-white p-3 text-xl text-white">
-                    <Accordion />  
-                    <Accordion />
-                    <Accordion />
-                    <Accordion />  
-                    <Accordion />
-                    <Accordion />
+                    {request.request.supportedCommands.map((command, key) => {
+                        return (
+                            <Accordion key={key} id={command.alias} /* commandAlias={command.alias} commandCaption={command.caption} commandDescription={command.description} *//>
+                        )
+                    })}
                 </div>
             </div>
         </>

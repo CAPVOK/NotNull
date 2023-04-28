@@ -3,11 +3,12 @@ import { useState } from 'react'
 import { api } from '../core/api';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { saveRequest } from '../core/Slice';
 
 
 export default function DropLink() {
-
+  const dispatch = useDispatch();
   const [isShowing, setIsShowing] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['sessionId', 'username']);
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ export default function DropLink() {
         removeCookie('sessionId', { path: '/', sameSite: 'Lax' });
         removeCookie('username', { path: '/', sameSite: 'Lax' });
         navigate('/', { replace: true });
+        dispatch(saveRequest(-1));
       }
     });
   }

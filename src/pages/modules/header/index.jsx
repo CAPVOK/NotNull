@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import DropLink from "../droplink";
 import SignUpLogInForm from "../login";
 import { useCookies } from 'react-cookie';
+import { useSelector } from "react-redux";
 
 
 const Header = () => {
 
-    const [cookies, setCookie] = useCookies(['username', 'sessionId']);
+    const [cookies, ] = useCookies(['username', 'sessionId']);
 
     const LnkStyle = "hover:bg-hoverBg rounded-[10px] py-1 px-4 active:bg-activeBg";
     const navigate = useNavigate();
@@ -16,6 +17,8 @@ const Header = () => {
     const clickTable = (broker) => { /*  */
         navigate(`/brokers/${broker}`);
     }
+
+    const request = useSelector((state) => state.request.request);
 
     return (
         <>
@@ -32,15 +35,15 @@ const Header = () => {
 
                     <div className='space-x-2 flex'>
                         {
-                            (cookies.sessionId)? (
-                            <DropLink/>
+                            (cookies.sessionId) ? (
+                                <DropLink />
                             ) : (
-                            <div className='whitespace-nowrap'>
-                                <SignUpLogInForm/>
-                            </div>
+                                <div className='whitespace-nowrap'>
+                                    <SignUpLogInForm />
+                                </div>
                             )
                         }
-                        </div>
+                    </div>
                 </div>
 
                 <div className='sm:hidden'>
@@ -52,17 +55,13 @@ const Header = () => {
                     </label>
                     <div id='sidebarMenu' className='bg-gradient-to-br from-white-40 to-white-10 backdrop-blur-md'> {/* то, что будет появляться */}
                         <div className='p-4 pt-20 mx-auto text-white grid grid-flow-row content-evenly text-center text-2xl h-full'>
-                            <Link to="/" className="tracking-widest  text-gray-100 font-normal">Главная</Link>                           
+                            <Link to="/" className="tracking-widest  text-gray-100 font-normal">Главная</Link>
                             <Link to="/about" className="tracking-widest  text-gray-100 font-normal">О нас</Link>
-                            <div className="tracking-widest border-gray-100 text-gray-100 font-thin">Брокеры:</div>
-                            <div
+                            <div className="tracking-widest border-gray-100 text-gray-100 font-thin">Сервисы БИ:</div>
+                            {(request !== -1) && <div
                                 className="tracking-widest  text-gray-100 font-light"
-                                onClick={() => clickTable("Sber")}
-                            >Sber</div>
-                            <div
-                                className="tracking-widest  text-gray-100 font-light"
-                                onClick={() => clickTable("Tinkoff")}
-                            >Tinkoff</div>
+                                onClick={() => clickTable(request.header.sender)}
+                            >{request.header.sender}</div>}
                         </div>
                     </div>
                 </div>
