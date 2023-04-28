@@ -27,13 +27,14 @@ export const Broker = () => {
                     <div className="mx-5">Status: Undefainded</div>
                 </div>
                 <div className="flex flex-col  min-h-screen border border-white p-3 text-xl text-white">
-                    {request.request.supportedCommands.map((command, key) => {
-                        return (<>
-                        {console.log(command.alias)}
-                        <Accordion key={key} id={command.alias} /* commandAlias={command.alias} commandCaption={command.caption} commandDescription={command.description} *//>
-                        </>
+                {
+                    request.request && 
+                    request.request.supportedCommands.map((command, key) => {
+                        return (
+                            <Accordion key={key} id={command.alias} />
                         )
-                    })}
+                    })
+                }
                 </div>
             </div>
         </>
