@@ -43,7 +43,7 @@ export const Accordion = ({ id } /* ,commandAlias ,commandCaption ,commandDescri
             <div className="w-full mx-auto mt-4 text-white">
                 <div
                     onClick={toggleInputs}
-                    className="border-t bg-slate-500 rounded flex space-x-5 p-5 cursor-pointer w-11/12"
+                    className="border-t bg-slate-500 rounded flex space-x-5 p-5 cursor-pointer w-full"
                 >
                     <p>{request.alias}</p>
                     <p>{request.caption}</p>
@@ -52,7 +52,7 @@ export const Accordion = ({ id } /* ,commandAlias ,commandCaption ,commandDescri
                 {showInputs &&
                     <div className=" bg-gray-700 rounded px-20">
                         <div className="flex flex-col">
-                            <div className="container flex flex-col">
+                            <div className=" flex flex-col">
                                 {
                                     request.parameters.map((data, key) => {
                                         const inputType = dataType(data.value.dataType);
