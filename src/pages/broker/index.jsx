@@ -10,7 +10,7 @@ export const Broker = () => {
 
     return (
         <>
-            <div className=" w-11/12 mx-auto bg-gradient-to-tr from-white/10 to-white/20 backdrop-blur-md rounded-lg p-5 mt-5">
+            <div className=" w-11/12 mx-auto bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-md rounded-lg p-5 mt-5">
                 <div className="mb-5 text-white font-normal text-xl flex justify-between items-center ml-[25px]">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ export const Broker = () => {
                     <div className="mx-5">{brokerName}</div>
                     <div className="mx-5">Status: Undefainded</div>
                 </div>
-                <div className="flex flex-col  min-h-screen border border-white p-3 text-xl text-white">
+                <div className="flex flex-col min-h-screen p-3 text-xl text-white">
                 {
                     request.request && 
                     request.request.supportedCommands.map((command, key) => {

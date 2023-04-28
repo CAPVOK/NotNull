@@ -11,16 +11,17 @@ import { useCookies } from 'react-cookie';
 export const Main = () => {
     const request = useSelector((state) => state.request.request);
     const dispatch = useDispatch();
-    const [cookies, ] = useCookies(['username', 'sessionId']);
-
-
+    
     const stompClient = useRef(null);
+    const [cookies, ] = useCookies(['username', 'sessionId']);
+    const [count, setCount] = useState(0);
+
     const onConnected = () => { // подключаемся)))
         console.log('WS connected');
-        stompClient.current.subscribe('/connect/newHandshake', chatMessages);
+        stompClient.current.subscribe('/connect/newHandshake', getData);
     };
 
-    const chatMessages = (payload) => { // слушаем сервер 
+    const getData = (payload) => { // слушаем сервер 
         const Data = JSON.parse(JSON.parse(payload.body));
         dispatch(saveRequest(Data));
         console.log(Data);
@@ -38,6 +39,7 @@ export const Main = () => {
             stompClient.current.connect({}, onConnected, onError);
         } else alert("Сначала пройдите авторизацию!");
     };
+
     const sendMessage = () => {
         if (stompClient.current !== null) {
             if (currentMessage !== "") {
@@ -48,8 +50,7 @@ export const Main = () => {
             } else console.log('Empty')
         }
     };
-    /* ------------------------------------------------------- */
-    const [count, setCount] = useState(0);
+    
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCount(count + 1);

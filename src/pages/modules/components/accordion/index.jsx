@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { useSelector } from "react-redux";
 
 export const Accordion = ({ id } /* ,commandAlias ,commandCaption ,commandDescription */) => {
+    
+    const [showInputs, setShowInputs] = useState(false);
+
     const request = useSelector((state) => {
         return state.request.request.request.supportedCommands.find((item) => 
             item.alias == id
         )
     })
-    console.log(request);
-    const [showInputs, setShowInputs] = useState(false);
+
     const toggleInputs = () => {
         setShowInputs(!showInputs);
     }
@@ -45,7 +47,7 @@ export const Accordion = ({ id } /* ,commandAlias ,commandCaption ,commandDescri
 
     return (
         <>
-            <div className="w-full mx-auto mt-4 text-white">
+            <div className="w-full mx-auto mt-4 text-white ">
                 <div
                     onClick={toggleInputs}
                     className="border-t bg-slate-500 rounded flex space-x-5 p-5 cursor-pointer w-full"

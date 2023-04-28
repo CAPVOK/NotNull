@@ -5,7 +5,7 @@ export const AboutUs = () => {
     return (
         <>
             <Header/>
-            <div className="w-full h-screen mt-12 md:mt-0">
+            <div className="w-full h-full mt-12 md:mt-0">
                 <div className="flex flex-col lg:grid lg:gap-6 2xl:gap-8 lg:grid-cols-12 2xl:pb-8 ml-2 pt-4 px-6">
                     {/* Краснов */}
                     <div className="bg-indigo-600 lg:order-1 lg:row-span-1 lg:col-span-7 rounded-lg shadow-xl mb-5 lg:mb-0">
