@@ -28,8 +28,10 @@ export const Broker = () => {
                 </div>
                 <div className="flex flex-col  min-h-screen border border-white p-3 text-xl text-white">
                     {request.request.supportedCommands.map((command, key) => {
-                        return (
-                            <Accordion key={key} id={command.alias} /* commandAlias={command.alias} commandCaption={command.caption} commandDescription={command.description} *//>
+                        return (<>
+                        {console.log(command.alias)}
+                        <Accordion key={key} id={command.alias} /* commandAlias={command.alias} commandCaption={command.caption} commandDescription={command.description} *//>
+                        </>
                         )
                     })}
                 </div>

@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { useSelector } from "react-redux";
 
 export const Accordion = ({ id } /* ,commandAlias ,commandCaption ,commandDescription */) => {
-    const request = useSelector((state) => state.request.request.request.supportedCommands[Number(id) - 1])
+    const request = useSelector((state) => {
+        return state.request.request.request.supportedCommands.find((item) => 
+            item.alias == id
+        )
+    })
+    console.log(request);
     const [showInputs, setShowInputs] = useState(false);
     const toggleInputs = () => {
         setShowInputs(!showInputs);
@@ -75,7 +80,7 @@ export const Accordion = ({ id } /* ,commandAlias ,commandCaption ,commandDescri
                             </div>
                             <br />
                             <div className="flex justify-between mx-7 my-3">
-                                <p className="m-1 inline-block">success/fail</p>
+                                {/* <p className="m-1 inline-block">success/fail</p> */}
                                 <button
                                     className="border rounded inline-block py-1 px-4 active:bg-white/30 hover:bg-white/20"
                                     onClick={Send}
@@ -83,7 +88,7 @@ export const Accordion = ({ id } /* ,commandAlias ,commandCaption ,commandDescri
                             </div>
                         </div>
                         <hr />
-                        <div className="flex flex-col items-center">
+                       {/*  <div className="flex flex-col items-center">
                             <p className="m-1">Таблица значений</p>
                             <table className="table-auto border-spacing-2 border-collapse border-slate-400 w-full mb-2">
                                 <thead className="text-left">
@@ -111,7 +116,7 @@ export const Accordion = ({ id } /* ,commandAlias ,commandCaption ,commandDescri
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> */}
                     </div>
                 }
             </div>
