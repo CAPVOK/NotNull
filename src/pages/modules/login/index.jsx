@@ -174,7 +174,7 @@ export default function SignUpLogInForm({buttonColor}) {
                     leaveFrom="opacity-100 scale-100"
                     leaveTo="opacity-0 scale-95"
                 >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-lg border-[1px] border-gray-500 bg-gradient-to-br from-white/30 to-white/20 backdrop-blur-xl p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-lg border-[1px] border-gray-500 bg-gradient-to-br from-gray-300/40 to-gary-300/30 backdrop-blur-xl p-6 text-left align-middle shadow-xl transition-all">
                     
 
                     <Dialog.Title
@@ -187,7 +187,7 @@ export default function SignUpLogInForm({buttonColor}) {
                             viewBox="0 0 24 24" 
                             strokeWidth="1.5" 
                             stroke="currentColor" 
-                            className=" fixed left-[25px] w-6 h-6 cursor-pointer" 
+                            className=" fixed left-[25px] w-6 h-6 cursor-pointer text-amber-500 " 
                             onClick={closeModal}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                         </svg>
