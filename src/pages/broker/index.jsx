@@ -39,8 +39,8 @@ export const Broker = () => {
                 request && 
                 request.request.supportedCommands.map((command, key) => {
                     return (
-                        <div className="">
-                            <Accordion key={key} id={command.alias} sender={brokerName}/>
+                        <div key={key} className="">
+                            <Accordion /* key={key} */ id={command.alias} sender={brokerName}/>
                         </div>
                     )
                 })

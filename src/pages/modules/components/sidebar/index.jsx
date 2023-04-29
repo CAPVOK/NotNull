@@ -3,14 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { incrementMessage } from "../../core/Slice";
 import { api } from '../../core/api';
 import { useCookies } from 'react-cookie';
+import { useEffect } from "react";
 
 export const SideBar = () => {
     const navigate = useNavigate();
     const messageId = useSelector((state)=>state.request.messageId);
+    const isConnected = useSelector((state)=>state.isConnected);
     const dispatch = useDispatch();
     const [cookies] = useCookies(['sessionId']);
     let milliseconds = new Date().valueOf();
     /* let hours = Math.floor( milliseconds / (1000 * 60 * 60) ); */
+    const requests = useSelector((state)=>state.request.requests);
+    console.log(requests); 
 
     const clickTable = (broker) => { 
         navigate(`/brokers/${broker}`);
@@ -31,8 +35,6 @@ export const SideBar = () => {
         console.log(JSON.stringify(strMess));
         dispatch(incrementMessage());
     }
-    const requests = useSelector((state)=>state.request.requests);
-    console.log(requests);
 
     return (
 

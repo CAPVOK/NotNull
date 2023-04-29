@@ -4,7 +4,7 @@ import { Bitcoin } from "../modules/components/bitcoin"
 import { useEffect, useRef, useState } from "react";
 import { over } from 'stompjs';
 import SockJS from 'sockjs-client';
-import { saveConnect, saveRequests } from "../modules/core/Slice";
+import { saveConnect, saveRequests, addRequests } from "../modules/core/Slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from 'react-cookie';
 import { api } from "../modules/core/api";
@@ -26,7 +26,6 @@ export const Main = () => {
     const getData = (payload) => { // слушаем сервер 
         const Data = JSON.parse(payload.body);
         dispatch(saveRequests(Data));
-        console.log(Data);
     };
 
     const onError = () => {
@@ -39,30 +38,13 @@ export const Main = () => {
             stompClient.current.connect({}, onConnected, onError);
             dispatch(saveConnect(true));
             api.get('/getCurHandshakes').then((res)=>{
-                /* for( let i = 0; i < res.data.length; i++){
-                    console.log(JSON.parse(res.data[i]));
-                } */
                 res.data.map((item)=>{
                     console.log(JSON.parse(item));
-                    dispatch(saveRequests(JSON.parse(item)));
+                    dispatch(addRequests(JSON.parse(item)));
                 })
             })
         } else alert("Сначала пройдите авторизацию!");
     };
-
-    /*  ------------Это не трогать!------------------- */
-    /* const currentMessage = "hello";  
-
-    const sendMessage = () => {
-        if (stompClient.current !== null) {
-            if (currentMessage !== "") {
-                const newMessage = {
-                    message: currentMessage,
-                };
-                stompClient.current.send("/app/subscribeToHandshakes", {}, JSON.stringify(newMessage));
-            } else console.log('Empty')
-        }
-    }; */
 
     const [isAnimeted, setAnimated] = useState(false);
 
@@ -95,7 +77,7 @@ export const Main = () => {
                             </div>
                         }
                     </div>
-                    <div className="hidden lg:block absolute top-0 right-0 w-6/12 h-full"> {/* монетка */}
+                    <div className=" hidden lg:block absolute top-[90px] right-0 w-6/12 h-full"> {/* монетка */}
                         {/* <Bitcoin/> */}
                     </div>
                 </div>
