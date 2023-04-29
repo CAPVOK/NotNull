@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.animated-text {
+animation-name: slideInRight;
+animation-duration: 1s;
+animation-fill-mode: forwards;
+}
+
+@keyframes slideInRight {
+from {
+transform: translateX(100%);
+opacity: 0;
+}
+
+to {
+transform: translateX(0);
+opacity: 1;
+}
+}
+
+.animated-fade-in {
+  animation: fadeIn 1s ease-in-out;
+  opacity: 0;
+  background-color: #000;
+  color: #fff;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
