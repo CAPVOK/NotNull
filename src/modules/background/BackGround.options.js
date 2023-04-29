@@ -86,7 +86,7 @@ export const Options = {
     },
     "retina_detect": true,
     "background": {
-        "color": "#0f172a",
+        "color": "#152330",
         "image": "",
         "position": "50% 50%",
         "repeat": "no-repeat",
