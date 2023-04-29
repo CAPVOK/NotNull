@@ -7,6 +7,7 @@ import SockJS from 'sockjs-client';
 import { saveConnect, saveStompClient, saveRequests } from "../modules/core/Slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from 'react-cookie';
+import { api } from "../modules/core/api";
 
 export const Main = () => {
 
@@ -43,6 +44,9 @@ export const Main = () => {
             stompClient.current.connect({}, onConnected, onError);
             dispatch(saveStompClient(stompClient));
             dispatch(saveConnect(true));
+            api.get('/subscribeToHandshakes').then((res)=>{
+                
+            })
         } else alert("Сначала пройдите авторизацию!");
     };
 
