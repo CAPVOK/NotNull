@@ -69,14 +69,14 @@ export const Main = () => {
 
     return (
         <div className="flex ">
-            {true && <SideBar />}
+            {isConnected && <SideBar />}
             <div className=" mx-1 w-full">
                 <Header />
                 <div className='grid grid-rows-1 gap-4 justify-center h-screen text-white mb-5 p-5 mt-16 sm:mt-5'>
                     <div className="mt-[50px]">
                         <p className='text-center text-3xl font-[600] py-5'>NotNull Company</p>
                         <img className="animate-spin-slow" src={logo} alt="logo" />
-                        {!(false) &&
+                        {!(isConnected) &&
                             <div className="flex justify-center my-7">
                                 <button
                                     className="rounded bg-white/20 py-2 px-4 w-2/3"
@@ -84,12 +84,6 @@ export const Main = () => {
                                 >Начать</button>
                             </div>
                         }
-                        {/* <div className="flex justify-center my-7">
-                            <button
-                                className="rounded bg-white/20 py-2 px-4 w-2/3"
-                                onClick={sendMessage}
-                            >Отправить</button>
-                        </div> */}
                     </div>
                 </div>
             </div>

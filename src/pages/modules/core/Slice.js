@@ -13,7 +13,10 @@ export const profileSlice = createSlice({
         saveRequests: (state, action) => {
             state.requests.push(action.payload)
         },
-        cleanRequests: (state) => {state.requests = []},
+        cleanRequests: (state) => {
+            state.requests = [];
+            state.isConnected = false;
+        },
     }
 })
 
