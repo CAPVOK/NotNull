@@ -66,7 +66,7 @@ export const Main = () => {
         if (isConnected) sendMessage();
 
         /* return () => clearInterval(intervalId); */
-    }, []);
+    }, [isConnected]);
 
     return (
         <div className="h-screen flex">
