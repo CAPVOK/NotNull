@@ -68,23 +68,18 @@ export const Main = () => {
     }, [count]);
 
     return (
-        <div className="flex ">
+        <div className="h-screen flex">
             {isConnected && <SideBar />}
-            <div className=" mx-1 w-full">
+            <div className="h-full w-full mx-1">
                 <Header />
-                <div className='grid grid-rows-1 gap-4 justify-center h-screen text-white mb-5 p-5 mt-16 sm:mt-5'>
-                    <div className="mt-[50px]">
+                <div className=' w-full p-5 pt-[50px] flex flex-col sm:mt-5 gap-4 text-white '>
                         <p className='text-center text-3xl font-[600] py-5'>NotNull Company</p>
-                        <img className="animate-spin-slow" src={logo} alt="logo" />
-                        {!(isConnected) &&
-                            <div className="flex justify-center my-7">
-                                <button
-                                    className="rounded bg-white/20 py-2 px-4 w-2/3"
-                                    onClick={WsConnect}
-                                >Начать</button>
-                            </div>
+                        <img className="animate-spin-slow mx-auto" src={logo} alt="logo" />
+                        {!(isConnected) && 
+                            <button onClick={WsConnect} className="w-full flex flex-row justify-center">
+                                <div  className="p-3 px-6 bg-amber-400 rounded-xl text-black font-medium">Начать</div>
+                            </button>
                         }
-                    </div>
                 </div>
             </div>
         </div>

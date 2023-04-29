@@ -9,7 +9,7 @@ export const SideBar = (data) => {
     const requests = useSelector((state)=>state.request.requests);
 
     return (
-        <div className=" hidden top-0 left-0 sm:flex sm:flex-col text-white bg-white/30 backdrop-blur-sm  place-content-start text-center text-2xl h-[full]" >
+        <div className="h-[full] top-0 left-0 flex flex-col text-white bg-white/30 backdrop-blur-sm place-content-start text-center text-2xl " >
             <p className="my-2 mx-1 mt-5">Сервисы БИ</p>
             <hr className="border mx-3 "/>
             {
