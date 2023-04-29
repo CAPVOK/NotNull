@@ -23,7 +23,8 @@ export const Main = () => {
 
     const onConnected = () => { // подключаемся)))
         console.log('WS connected');
-        stompClient.current.subscribe('/connect/newHandshake', sendMessage, getData);
+        stompClient.current.subscribe('/connect/newHandshake', getData);
+        sendMessage();
     };
 
     const getData = (payload) => { // слушаем сервер 
@@ -58,7 +59,7 @@ export const Main = () => {
         }
     };
 
-    useEffect(() => {
+    /* useEffect(() => {
         const intervalId = setInterval(() => {
             setCount(count + 1);
         }, 1000);
@@ -66,7 +67,7 @@ export const Main = () => {
         if (isConnected) sendMessage();
 
         return () => clearInterval(intervalId);
-    }, [count]);
+    }, [count]); */
 
     return (
         <div className="h-screen flex">
