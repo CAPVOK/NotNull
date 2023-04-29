@@ -12,8 +12,8 @@ export const Broker = () => {
     })
     const navigate = useNavigate();
     
-    console.log(brokerName);
-    console.log(request);
+    /* console.log(brokerName);
+    console.log(request); */
 
     return (
         <>

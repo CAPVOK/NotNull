@@ -10,7 +10,7 @@ import { cleanRequests } from '../core/Slice';
 export default function DropLink() {
   const dispatch = useDispatch();
   const [isShowing, setIsShowing] = useState(false)
-  const [cookies, setCookie, removeCookie] = useCookies(['sessionId', 'username']);
+  const [cookies,, removeCookie] = useCookies(['sessionId', 'username']);
   const navigate = useNavigate();
   const send = () => {
     api.post('/authorisation/logout', { sessionId: cookies.sessionId }).then((res) => {
@@ -34,7 +34,7 @@ export default function DropLink() {
           <div className={`bg-sky-600 hover:bg-sky-700 h-9 flex justify-between   rounded-full items-center max-w-full min-w-min ${cookies.username.length < 4 ? 'pl-3 w-[118px] ' : 'pl-1'}`}>
             <div to="/profile" className='mx-3'>{"" + cookies.username}</div>
             <Menu.Button className="z-10 inline-flex w-12">
-              <img className="rounded-full" src='https://termosfera.su/wp-content/uploads/2022/04/2816616767_vubrbej.jpg'></img>
+              <img className="rounded-full" src='https://termosfera.su/wp-content/uploads/2022/04/2816616767_vubrbej.jpg' alt=''></img>
             </Menu.Button>
           </div>
         </div>
