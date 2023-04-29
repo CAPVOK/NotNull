@@ -28,7 +28,7 @@ export const Main = () => {
     };
 
     const getData = (payload) => { // слушаем сервер 
-        const Data = JSON.parse(JSON.parse(payload.body));
+        const Data = JSON.parse(payload.body);
         dispatch(saveRequests(Data));
         console.log(Data);
     };
