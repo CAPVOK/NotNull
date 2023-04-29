@@ -27,10 +27,10 @@ export const Test1 = () => {
                     <AnimatedText />
                     <AnimatedFade/>
                     {/* <img className="animate-spin-slow mx-auto" src={logo} alt="logo" /> */}
-                    <div className="flex flex-col w-full h-96">
-                        {/* <Bitcoin/> */}
+                    <div className="absolute top-0 bottom-0 h-full right-0 w-1/2 bg-red-500/20">
+                        <Bitcoin/>
                         
-                        <table class="min-w-full text-left text-sm font-light">
+                        {/* <table class="min-w-full text-left text-sm font-light">
                             <thead class="border-b font-medium dark:border-neutral-500">
                                 <tr>
                                 <th scope="col" class="px-6 py-4">#</th>
@@ -62,7 +62,7 @@ export const Test1 = () => {
                                 <td class="whitespace-nowrap px-6 py-4">@twitter</td>
                                 </tr>
                             </tbody>
-                            </table>
+                            </table> */}
                     </div>
                     
                     <button  className="w-full mt-5 flex flex-row justify-center">
