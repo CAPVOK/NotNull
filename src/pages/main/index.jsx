@@ -44,9 +44,7 @@ export const Main = () => {
             stompClient.current.connect({}, onConnected, onError);
             dispatch(saveStompClient(stompClient));
             dispatch(saveConnect(true));
-            api.get('/subscribeToHandshakes').then((res)=>{
-                
-            })
+            sendMessage();
         } else alert("Сначала пройдите авторизацию!");
     };
 
@@ -56,7 +54,7 @@ export const Main = () => {
                 const newMessage = {
                     message: currentMessage,
                 };
-                stompClient.current.send("/app/messageForHandshake", {}, JSON.stringify(newMessage));
+                stompClient.current.send("/app/subscribeToHandshakes", {}, JSON.stringify(newMessage));
             } else console.log('Empty')
         }
     };
