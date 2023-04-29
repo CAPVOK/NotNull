@@ -31,7 +31,7 @@ export const Broker = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                     </svg>
                     <div className="mx-5">{brokerName}</div>
-                    <div className="mx-5">Status: Undefainded</div>
+                    {/* <div className="mx-5">Status: Undefainded</div> */}
                 </div>
                 <div className="flex flex-col min-h-screen p-3 text-xl text-white">
                 {
