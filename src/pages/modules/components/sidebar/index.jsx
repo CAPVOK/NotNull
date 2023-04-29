@@ -35,7 +35,7 @@ export const SideBar = (data) => {
 
     return (
 
-            <div className="mt-16 sm:mt-4 m-4 sm:ml-0 md:m-5 md:ml-0 lg:m-6 lg:ml-0 w-full sm:w-6/12 lg:w-4/12 flex flex-col text-white bg-gradient-to-br from-white/30 sm:rounded-none sm:rounded-r-xl rounded-xl to-white/20 backdrop-blur-md shadow-xl place-content-start text-center text-2xl " >
+            <div className="mt-16 sm:mt-4 m-4 sm:ml-0 md:m-5 md:ml-0 lg:m-6 lg:ml-0 w-full sm:w-6/12 lg:w-4/12 flex flex-col text-white border-[1px] border-gray-500 bg-gradient-to-br from-white/30 sm:rounded-none sm:rounded-r-xl rounded-xl to-white/20 backdrop-blur-md shadow-xl place-content-start text-center text-2xl " >
                 <p className="mx-1 mt-6 mb-4 ">Сервисы БИ</p>
                 <b className="border-[1px] w-11/12 mx-auto border-gray-300"/>
                 {

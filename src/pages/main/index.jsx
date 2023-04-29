@@ -80,7 +80,7 @@ export const Main = () => {
                         <div>
                             <button 
                                 onClick={WsConnect} 
-                                className=" mt-5 p-3 px-6 bg-amber-400 rounded-xl text-black font-medium"
+                                className=" mt-5 p-3 px-6 bg-amber-400 hover:bg-amber-500 transition ease-in-out rounded-xl text-black font-medium"
                             >
                                 Начать
                             </button>
