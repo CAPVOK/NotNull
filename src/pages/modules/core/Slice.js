@@ -6,6 +6,7 @@ export const profileSlice = createSlice({
         requests: [],
         isConnected: false,
         stompClient: null,
+        messageId: 0,
     },
     reducers: {
         saveConnect: (state, action) => {state.isConnected = action.payload},
@@ -16,10 +17,14 @@ export const profileSlice = createSlice({
         cleanRequests: (state) => {
             state.requests = [];
             state.isConnected = false;
+            state.messageId = 0;
         },
+        incrementMessage: (state) => {
+            state.messageId = state.messageId + 1;
+        }
     }
 })
 
-export const { saveConnect, saveStompClient, saveRequests, cleanRequests} = profileSlice.actions
+export const { saveConnect, saveStompClient, saveRequests, cleanRequests, incrementMessage} = profileSlice.actions
 
 export default profileSlice.reducer
