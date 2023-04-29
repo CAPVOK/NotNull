@@ -23,7 +23,7 @@ export const Main = () => {
 
     const onConnected = () => { // подключаемся)))
         console.log('WS connected');
-        stompClient.current.subscribe('/connect/newHandshake', getData);
+        stompClient.current.subscribe('/connect/newHandshake', sendMessage, getData);
     };
 
     const getData = (payload) => { // слушаем сервер 
@@ -44,7 +44,6 @@ export const Main = () => {
             stompClient.current.connect({}, onConnected, onError);
             dispatch(saveStompClient(stompClient));
             dispatch(saveConnect(true));
-            sendMessage();
         } else alert("Сначала пройдите авторизацию!");
     };
 
