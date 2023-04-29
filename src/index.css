@@ -20,19 +20,20 @@ opacity: 1;
 }
 }
 
-.animated-fade-in {
-  animation: fadeIn 1s ease-in-out;
+.animated-text {
   opacity: 0;
-  background-color: #000;
-  color: #fff;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
-  0% {
+  from {
     opacity: 0;
+    transform: translateY(20px);
   }
 
-  100% {
+  to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
+
