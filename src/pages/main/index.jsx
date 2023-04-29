@@ -12,12 +12,12 @@ export const Main = () => {
 
     const isConnected = useSelector((state) => state.request.isConnected)
     const dispatch = useDispatch();
-    
+
     const newStomp1 = useSelector((state) => state.request.stompClient);
     const newStomp2 = useRef(null);
     const stompClient = isConnected ? newStomp1 : newStomp2;
 
-    const [cookies, ] = useCookies(['username', 'sessionId']);
+    const [cookies,] = useCookies(['username', 'sessionId']);
     const [count, setCount] = useState(0);
 
     const onConnected = () => { // подключаемся)))
@@ -38,7 +38,7 @@ export const Main = () => {
     const currentMessage = "hello";
 
     const WsConnect = () => {
-        if (cookies.sessionId){
+        if (cookies.sessionId) {
             stompClient.current = over(new SockJS('http://localhost:8085/ws'));
             stompClient.current.connect({}, onConnected, onError);
             dispatch(saveStompClient(stompClient));
@@ -69,17 +69,18 @@ export const Main = () => {
 
     return (
         <div className="h-screen flex">
+            <div className="sm:hidden"><Header/></div>
             {isConnected && <SideBar />}
-            <div className="h-full w-full mx-1">
+            <div className={`${isConnected ? 'hidden sm:block' : ''} w-full  mx-1`}>
                 <Header />
-                <div className=' w-full p-5 pt-[50px] flex flex-col sm:mt-5 gap-4 text-white '>
-                        <p className='text-center text-3xl font-[600] py-5'>NotNull Company</p>
-                        <img className="animate-spin-slow mx-auto" src={logo} alt="logo" />
-                        {!(isConnected) && 
-                            <button onClick={WsConnect} className="w-full flex flex-row justify-center">
-                                <div  className="p-3 px-6 bg-amber-400 rounded-xl text-black font-medium">Начать</div>
-                            </button>
-                        }
+                <div className='w-full p-5 mt-[50px] flex flex-col sm:mt-5 gap-4 text-white '>
+                    <p className='text-center text-3xl font-[600] py-5'>NotNull Company</p>
+                    <img className="animate-spin-slow mx-auto" src={logo} alt="logo" />
+                    {!(isConnected) &&
+                        <button onClick={WsConnect} className="w-full mt-5 flex flex-row justify-center">
+                            <div className="p-3 px-6 bg-amber-400 rounded-xl text-black font-medium">Начать</div>
+                        </button>
+                    }
                 </div>
             </div>
         </div>
