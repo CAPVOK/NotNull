@@ -7,6 +7,7 @@ import SockJS from 'sockjs-client';
 import { saveConnect, saveStompClient, saveRequests } from "../modules/core/Slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from 'react-cookie';
+import { api } from "../modules/core/api";
 
 export const Main = () => {
 
@@ -23,10 +24,11 @@ export const Main = () => {
     const onConnected = () => { // подключаемся)))
         console.log('WS connected');
         stompClient.current.subscribe('/connect/newHandshake', getData);
+        sendMessage();
     };
 
     const getData = (payload) => { // слушаем сервер 
-        const Data = JSON.parse(JSON.parse(payload.body));
+        const Data = JSON.parse(payload.body);
         dispatch(saveRequests(Data));
         console.log(Data);
     };
@@ -52,12 +54,12 @@ export const Main = () => {
                 const newMessage = {
                     message: currentMessage,
                 };
-                stompClient.current.send("/app/messageForHandshake", {}, JSON.stringify(newMessage));
+                stompClient.current.send("/app/subscribeToHandshakes", {}, JSON.stringify(newMessage));
             } else console.log('Empty')
         }
     };
 
-    useEffect(() => {
+    /* useEffect(() => {
         const intervalId = setInterval(() => {
             setCount(count + 1);
         }, 1000);
@@ -65,7 +67,7 @@ export const Main = () => {
         if (isConnected) sendMessage();
 
         return () => clearInterval(intervalId);
-    }, [count]);
+    }, [isConnected]); */
 
     return (
         <div className="h-screen flex">

@@ -174,7 +174,7 @@ export default function SignUpLogInForm({buttonColor}) {
                     leaveFrom="opacity-100 scale-100"
                     leaveTo="opacity-0 scale-95"
                 >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-lg border-2 border-[#8696b0]  bg-gradient-to-b from-[#32528a] to-[#30384a] p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-lg border-[1px] border-gray-500 bg-gradient-to-br from-gray-300/40 to-gary-300/30 backdrop-blur-xl p-6 text-left align-middle shadow-xl transition-all">
                     
 
                     <Dialog.Title
@@ -187,7 +187,7 @@ export default function SignUpLogInForm({buttonColor}) {
                             viewBox="0 0 24 24" 
                             strokeWidth="1.5" 
                             stroke="currentColor" 
-                            className=" fixed left-[25px] w-6 h-6 cursor-pointer" 
+                            className=" fixed left-[25px] w-6 h-6 cursor-pointer text-amber-500 " 
                             onClick={closeModal}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                         </svg>
@@ -285,7 +285,7 @@ export default function SignUpLogInForm({buttonColor}) {
                     <div className="mt-7">
                         {typeForm && <button
                         type="button"
-                        className="inline-flex justify-center w-full rounded-md border border-transparent bg-[#2fc0ff] px-4 py-2 text-lg font-medium text-white hover:bg-blue-500 active:bg-[#2fc0ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        className="inline-flex justify-center w-full rounded-md border border-transparent bg-amber-500 px-4 py-2 text-lg font-medium text-white hover:bg-amber-600 active:bg-amber-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                         onClick={()=> {
                             if (isCorrect && !Empty){
                                 send1();
@@ -296,7 +296,7 @@ export default function SignUpLogInForm({buttonColor}) {
                         </button>}
                         {!typeForm && <button
                         type="button"
-                        className="inline-flex justify-center w-full rounded-md border border-transparent bg-[#2fc0ff] px-4 py-2 text-lg font-medium text-white hover:bg-blue-500 active:bg-[#2fc0ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        className="inline-flex justify-center w-full rounded-md border border-transparent bg-amber-500 px-4 py-2 text-lg font-medium text-white hover:bg-amber-600 active:bg-amber-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                         onClick={()=> {
                             if (!Empty){
                                 send2();
