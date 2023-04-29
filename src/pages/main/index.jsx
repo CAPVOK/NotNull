@@ -24,8 +24,7 @@ export const Main = () => {
     const onConnected = () => { // подключаемся)))
         console.log('WS connected');
         stompClient.current.subscribe('/connect/newHandshake', getData);
-        if (isConnected) sendMessage();
-        console.log("sended1");
+        sendMessage();
     };
 
     const getData = (payload) => { // слушаем сервер 
