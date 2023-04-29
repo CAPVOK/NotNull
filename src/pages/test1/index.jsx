@@ -4,71 +4,40 @@ import Header from "../modules/header";
 import '../../index.css'
 export const Test1 = () => {
 
-    function AnimatedText() {
-        return (
-          <h1 className="text-4xl font-bold text-white animated-text">NotNull !== !Null</h1>
-        );
-      }
+    const [isAnimeted, setAnimated] = useState(false);
 
-      function AnimatedFade() {
-        return (
-          <h1 className="text-4xl font-bold text-white animated-fade-in">NotNull === !Null</h1>
-        );
-      }
-      
+    useEffect(()=>{
+        setAnimated(true);
+    });
+
     return (
         <div className="h-screen flex">
-            <div className="sm:hidden"><Header/></div>
-             <SideBar />
-            <div className={` sm:block w-full  mx-1`}>
-                <Header />
-                <div className='w-full p-5 mt-[50px] flex flex-col sm:mt-5 gap-4 text-white '>
-                    <p className='text-center text-3xl font-[600] py-5'>NotNull Company</p>
-                    <AnimatedText />
-                    <AnimatedFade/>
-                    {/* <img className="animate-spin-slow mx-auto" src={logo} alt="logo" /> */}
-                    <div className="absolute top-0 bottom-0 h-full right-0 w-1/2 bg-red-500/20">
-                        <Bitcoin/>
-                        
-                        {/* <table class="min-w-full text-left text-sm font-light">
-                            <thead class="border-b font-medium dark:border-neutral-500">
-                                <tr>
-                                <th scope="col" class="px-6 py-4">#</th>
-                                <th scope="col" class="px-6 py-4">First</th>
-                                <th scope="col" class="px-6 py-4">Last</th>
-                                <th scope="col" class="px-6 py-4">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr
-                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                <td class="whitespace-nowrap px-6 py-4">Otto</td>
-                                <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                                </tr>
-                                <tr
-                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
-                                <td class="whitespace-nowrap px-6 py-4">Jacob</td>
-                                <td class="whitespace-nowrap px-6 py-4">Thornton</td>
-                                <td class="whitespace-nowrap px-6 py-4">@fat</td>
-                                </tr>
-                                <tr
-                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
-                                <td class="whitespace-nowrap px-6 py-4">Larry</td>
-                                <td class="whitespace-nowrap px-6 py-4">Wild</td>
-                                <td class="whitespace-nowrap px-6 py-4">@twitter</td>
-                                </tr>
-                            </tbody>
-                            </table> */}
+            <div className="sm:hidden"><Header /></div>
+            {isConnected && <SideBar />}
+            <div className={`${isConnected ? 'hidden sm:block' : ''} w-full  mx-1`}>
+            <div className="hidden sm:block"><Header /></div>
+            <div className='w-full px-10 lg:pl-12 tracking-widest mt-12 sm:mt-0 gap-4 text-white '>
+                <div className={`beforeAnimated1 ${isAnimeted ? 'afterAnimated' : ''} py-5 pb-9 text-4xl font-semibold text-amber-500`}>Брокер Дядя Вова</div>
+                    <div className="w-full lg:w-7/12">
+                        <div className={`beforeAnimated2 ${isAnimeted ? 'afterAnimated' : ''} text-2xl sm:text-3xl font-light leading-relaxed `}> {/* текст большой */}
+                            Добро пожаловать в наше приложение для банковского обслуживания! Мы предлагаем удобный и надежный способ управлять своими финансами, совершать платежи и получать доступ к своим банковским продуктам.
+                        </div>
+                        <div className={`beforeAnimated3 ${isAnimeted ? 'afterAnimated' : ''} mt-9 text-gray-300 leading-relaxed`}>
+                            Мы гарантируем безопасность ваших данных и финансовых операций. Мы используем самые современные технологии для защиты вашей информации и предотвращения мошенничества.
+                        </div>
+                        {!(isConnected) &&
+                            <div className="">
+                                <button 
+                                    onClick={WsConnect} 
+                                    className=" mt-9 p-3 px-6 bg-amber-500 hover:bg-amber-500 transition ease-in-out rounded-xl text-black font-medium">
+                                    Начать
+                                </button>
+                            </div>
+                        }
                     </div>
-                    
-                    <button  className="w-full mt-5 flex flex-row justify-center">
-                        <div className="p-3 px-6 bg-amber-400 rounded-xl text-black font-medium">Начать</div>
-                    </button>
-                
+                    <div className="hidden lg:block absolute top-0 right-0 w-6/12 h-full"> {/* монетка */}
+                        <Bitcoin/>
+                    </div>
                 </div>
             </div>
         </div>
