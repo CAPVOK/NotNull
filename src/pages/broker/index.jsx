@@ -11,10 +11,6 @@ export const Broker = () => {
         )
     })
     const navigate = useNavigate();
-    
-    /* console.log(brokerName);
-    console.log(request); */
-
 
     /* bg-gradient-to-br from-white/30 to-white/20 backdrop-blur-md */
     return (

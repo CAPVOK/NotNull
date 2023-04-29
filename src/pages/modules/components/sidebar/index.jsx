@@ -14,7 +14,6 @@ export const SideBar = () => {
     let milliseconds = new Date().valueOf();
     /* let hours = Math.floor( milliseconds / (1000 * 60 * 60) ); */
     const requests = useSelector((state)=>state.request.requests);
-    console.log(requests); 
 
     const clickTable = (broker) => { 
         navigate(`/brokers/${broker}`);

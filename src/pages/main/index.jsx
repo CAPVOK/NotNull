@@ -39,7 +39,6 @@ export const Main = () => {
             dispatch(saveConnect(true));
             api.get('/getCurHandshakes').then((res)=>{
                 res.data.map((item)=>{
-                    console.log(JSON.parse(item));
                     dispatch(addRequests(JSON.parse(item)));
                 })
             })
