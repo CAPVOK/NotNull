@@ -4,7 +4,7 @@ import { incrementMessage } from "../../core/Slice";
 import { api } from '../../core/api';
 import { useCookies } from 'react-cookie';
 
-export const SideBar = (data) => {
+export const SideBar = () => {
     const navigate = useNavigate();
     const messageId = useSelector((state)=>state.request.messageId);
     const dispatch = useDispatch();
@@ -32,6 +32,7 @@ export const SideBar = (data) => {
         dispatch(incrementMessage());
     }
     const requests = useSelector((state)=>state.request.requests);
+    console.log(requests);
 
     return (
 

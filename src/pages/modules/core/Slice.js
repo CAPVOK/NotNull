@@ -5,24 +5,17 @@ export const profileSlice = createSlice({
     initialState: {
         requests: [],
         isConnected: false,
-        stompClient: null,
         messageId: 0,
     },
     reducers: {
         saveConnect: (state, action) => {state.isConnected = action.payload},
-        saveStompClient: (state, action) => {state.stompClient = action.payload},
-        saveRequests: (state, action) => {
-            state.requests.push(action.payload)
-        },
+        saveRequests: (state, action) => {state.requests = action.payload},
         cleanRequests: (state) => {
-            state.requests = [];
+            state.requests = null;
             state.isConnected = false;
             state.messageId = 0;
-            state.stompClient = null;
         },
-        incrementMessage: (state) => {
-            state.messageId = state.messageId + 1;
-        }
+        incrementMessage: (state) => {state.messageId = state.messageId + 1 }
     }
 })
 
