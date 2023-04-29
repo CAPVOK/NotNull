@@ -2,7 +2,6 @@ import { Menu, Transition } from '@headlessui/react'
 import { useState } from 'react'
 import { api } from '../core/api';
 import { useCookies } from 'react-cookie';
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cleanRequests } from '../core/Slice';
 
@@ -11,15 +10,14 @@ export default function DropLink() {
   const dispatch = useDispatch();
   const [isShowing, setIsShowing] = useState(false)
   const [cookies,, removeCookie] = useCookies(['sessionId', 'username']);
-  const navigate = useNavigate();
   const send = () => {
     api.post('/authorisation/logout', { sessionId: cookies.sessionId }).then((res) => {
       if (res.data.status === 'done') {
         console.log('success log out');
         removeCookie('sessionId', { path: '/', sameSite: 'Lax' });
         removeCookie('username', { path: '/', sameSite: 'Lax' });
-        navigate('/', { replace: true });
         dispatch(cleanRequests());
+        window.location.reload();
       }
     });
   }
