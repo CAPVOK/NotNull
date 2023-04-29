@@ -15,8 +15,10 @@ export const Broker = () => {
     /* console.log(brokerName);
     console.log(request); */
 
+
+    /* bg-gradient-to-br from-white/30 to-white/20 backdrop-blur-md */
     return (
-        <div className="min-h-[95vh] mt-5 w-11/12 p-0 pt-5 sm:p-5 mx-auto bg-gradient-to-br from-white/30 to-white/20 backdrop-blur-md rounded-xl ">
+        <div className="min-h-[95vh] mt-5 w-11/12 p-0 pt-5 sm:p-5 mx-auto bg-transparent rounded-xl ">
             <div onClick={() => navigate(-1)} 
                 className="flex p-2 px-3 flex-row w-min justify-start space-x-5 items-center rounded-lg text-white font-normal text-xl cursor-pointer hover:bg-white/20">
                 <svg

@@ -69,17 +69,22 @@ export const Main = () => {
 
     return (
         <div className="h-screen flex">
-            <div className="sm:hidden"><Header/></div>
+            <div className="sm:hidden"><Header /></div>
             {isConnected && <SideBar />}
             <div className={`${isConnected ? 'hidden sm:block' : ''} w-full  mx-1`}>
-                <Header />
-                <div className='w-full p-5 mt-[50px] flex flex-col sm:mt-5 gap-4 text-white '>
+            <div className="hidden sm:block"><Header /></div>
+                <div className='w-full p-5 mt-[50px] grid grid-col-1 place-items-center sm:mt-5 gap-4 text-white '>
                     <p className='text-center text-3xl font-[600] py-5'>NotNull Company</p>
                     <img className="animate-spin-slow mx-auto" src={logo} alt="logo" />
                     {!(isConnected) &&
-                        <button onClick={WsConnect} className="w-full mt-5 flex flex-row justify-center">
-                            <div className="p-3 px-6 bg-amber-400 rounded-xl text-black font-medium">Начать</div>
-                        </button>
+                        <div>
+                            <button 
+                                onClick={WsConnect} 
+                                className=" mt-5 p-3 px-6 bg-amber-400 hover:bg-amber-500 transition ease-in-out rounded-xl text-black font-medium"
+                            >
+                                Начать
+                            </button>
+                        </div>
                     }
                 </div>
             </div>

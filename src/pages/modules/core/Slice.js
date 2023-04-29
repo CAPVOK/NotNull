@@ -18,6 +18,7 @@ export const profileSlice = createSlice({
             state.requests = [];
             state.isConnected = false;
             state.messageId = 0;
+            state.stompClient = null;
         },
         incrementMessage: (state) => {
             state.messageId = state.messageId + 1;
