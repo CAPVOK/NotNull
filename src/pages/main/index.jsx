@@ -21,11 +21,16 @@ export const Main = () => {
     const onConnected = () => { // подключаемся)))
         console.log('WS connected');
         stompClient.current.subscribe('/connect/newHandshake', getData);
+        stompClient.current.subscribe('/connect/getStatus', getStatus);
     };
 
     const getData = (payload) => { // слушаем сервер 
         const Data = JSON.parse(payload.body);
         dispatch(saveRequests(Data));
+    };
+    const getStatus = (payload) => { // слушаем сервер 
+        const Status = JSON.parse(payload.body);
+        console.log(Status);
     };
 
     const onError = () => {

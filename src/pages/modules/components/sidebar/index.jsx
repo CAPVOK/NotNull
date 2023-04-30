@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { incrementMessage } from "../../core/Slice";
 import { api } from '../../core/api';
 import { useCookies } from 'react-cookie';
-import { useEffect } from "react";
 
 export const SideBar = () => {
     const navigate = useNavigate();
@@ -28,10 +27,10 @@ export const SideBar = () => {
                 command: "ctStatus"
             }
         }
-        const strMess = {
-            message : JSON.stringify(mess)
-        };
-        console.log(JSON.stringify(strMess));
+        console.log(JSON.stringify(mess));
+        api.post('/sendStatus', {message: JSON.stringify(mess)}).then((res)=>{
+
+        });
         dispatch(incrementMessage());
     }
 
