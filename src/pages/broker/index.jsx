@@ -16,10 +16,8 @@ export const Broker = () => {
     const response = useSelector((state)=>state.request.response);
     console.log(response);
     
-
-    /* const response = useSelector((state)=>state.request.response.response);
-    const rows = response.status.advStatus.data.rows;
-    const fields = response.status.advStatus.fields;
+    /* const rows = response.response.status.advStatus.data.rows;
+    const fields = response.response.status.advStatus.fields;
 
 
     console.log('fields')
@@ -97,7 +95,7 @@ export const Broker = () => {
             </div> */}
             {/* list */}
             <div className="flex flex-col p-3 text-xl text-white">
-            {/* {
+            {
                 request && 
                 request.request.supportedCommands.map((command, key) => {
                     return (
@@ -106,7 +104,7 @@ export const Broker = () => {
                         </div>
                     )
                 })
-            } */}
+            }
             </div>
         </div>
     )
