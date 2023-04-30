@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { Accordion } from "../modules/components/accordion";
 import { useSelector } from "react-redux";
+import { async } from "q";
 
 export const Broker = () => {
     const brokerName = useParams().broker;
@@ -12,8 +13,11 @@ export const Broker = () => {
             item.header.sender === brokerName
         )
     })
+    const response = useSelector((state)=>state.request.response);
+    console.log(response);
+    
 
-    const response = useSelector((state)=>state.request.response.response);
+    /* const response = useSelector((state)=>state.request.response.response);
     const rows = response.status.advStatus.data.rows;
     const fields = response.status.advStatus.fields;
 
@@ -26,7 +30,7 @@ export const Broker = () => {
         return (<>
             
         </>)
-    }
+    } */
     
     const bord = "border-2 border-gray-300"
     /* bg-gradient-to-br from-white/30 to-white/20 backdrop-blur-md */

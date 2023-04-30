@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 export const SideBar = () => {
     const navigate = useNavigate();
     const messageId = useSelector((state)=>state.request.messageId);
+    
     const isConnected = useSelector((state)=>state.isConnected);
     const dispatch = useDispatch();
     const [cookies] = useCookies(['sessionId']);

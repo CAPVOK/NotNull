@@ -22,6 +22,7 @@ export const Main = () => {
         console.log('WS connected');
         stompClient.current.subscribe('/connect/newHandshake', getData);
         stompClient.current.subscribe('/connect/getStatus', getStatus);
+        stompClient.current.subscribe('/connect/errors', getError);
     };
 
     const getData = (payload) => { // слушаем сервер 
@@ -30,7 +31,12 @@ export const Main = () => {
     };
     const getStatus = (payload) => { // слушаем сервер 
         const Status = JSON.parse(payload.body);
+        console.log(Status);
         dispatch(saveResponse(Status));
+    };
+    const getError = (payload) => { // слушаем сервер 
+        const Error = JSON.parse(payload.body);
+        alert(`Ошибка в команде: ${Error.command}\nОписание ошибки: ${Error.errorText}`);
     };
 
     const onError = () => {
