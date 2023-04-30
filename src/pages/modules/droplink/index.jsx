@@ -24,12 +24,12 @@ export default function DropLink() {
 
 
   return (
-    <div className="text-right z-10"
+    <div className="text-right z-10 cursor-pointer"
       onMouseEnter={() => setIsShowing(true)}
       onMouseLeave={() => setIsShowing(false)}>
       <Menu as="div" className="relative inline-block text-left text-black">
         <div>
-          <div className={`bg-amber-400 hover:bg-amber-500 h-9 flex justify-between rounded-full items-center max-w-full min-w-min ${cookies.username.length < 4 ? 'pl-3 w-[118px] ' : 'pl-1'}`}>
+          <div className={`bg-amber-500 h-9 flex justify-between rounded-full items-center max-w-full min-w-min ${cookies.username.length < 4 ? 'pl-3 w-[118px] ' : 'pl-1'}`}>
             <div to="/profile" className='mx-3'>{"" + cookies.username}</div>
             <Menu.Button className="z-10 inline-flex w-12">
               <img className="rounded-full" src='https://termosfera.su/wp-content/uploads/2022/04/2816616767_vubrbej.jpg' alt=''></img>
@@ -54,7 +54,7 @@ export default function DropLink() {
                   <button
                     type="button"
                     onClick={send}
-                    className='hover:bg-amber-600 text-black group flex w-full items-center rounded-md px-2 py-2 text-sm my-1'
+                    className='hover:bg-black/10 text-black group flex w-full items-center rounded-md px-2 py-2 text-sm my-1'
                   >Log out</button>
                 )}
               </Menu.Item>

@@ -29,10 +29,10 @@ export const SideBar = () => {
                 command: "ctStatus"
             }
         }
-        console.log(JSON.stringify(mess));
-        api.post('/sendStatus', {message: JSON.stringify(mess)}).then((res)=>{
-
-        });
+        const strMess = {
+            message : JSON.stringify(mess)
+        };
+        console.log(JSON.stringify(strMess));
         dispatch(incrementMessage());
     }
 
@@ -53,6 +53,5 @@ export const SideBar = () => {
                 ) )
             }
         </div>
-
     );
 }

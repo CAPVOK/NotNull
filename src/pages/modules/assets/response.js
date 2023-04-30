@@ -1,4 +1,4 @@
-export const response = {
+export const Response = {
   "header": {
     "messageNum": "test",
     "timestamp": 123,

@@ -21,16 +21,11 @@ export const Main = () => {
     const onConnected = () => { // подключаемся)))
         console.log('WS connected');
         stompClient.current.subscribe('/connect/newHandshake', getData);
-        stompClient.current.subscribe('/connect/getStatus', getStatus);
     };
 
     const getData = (payload) => { // слушаем сервер 
         const Data = JSON.parse(payload.body);
         dispatch(saveRequests(Data));
-    };
-    const getStatus = (payload) => { // слушаем сервер 
-        const Status = JSON.parse(payload.body);
-        console.log(Status);
     };
 
     const onError = () => {
@@ -54,7 +49,7 @@ export const Main = () => {
 
     useEffect(()=>{
         setAnimated(true);
-    }, []);
+    },[]);
 
     return (
         <div className="h-screen flex">
@@ -75,7 +70,7 @@ export const Main = () => {
                             <div className="">
                                 <button 
                                     onClick={WsConnect} 
-                                    className=" mt-9 p-3 px-6 bg-amber-500 hover:bg-amber-500 rounded-xl text-black hover:scale-110 transition ease-in-out font-medium">
+                                    className=" mt-9 p-3 px-6 bg-amber-500 hover:scale-110 transition ease-in-out rounded-xl text-black font-medium">
                                     Начать
                                 </button>
                             </div>

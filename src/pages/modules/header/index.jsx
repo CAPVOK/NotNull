@@ -3,14 +3,15 @@ import './Header.css'
 import DropLink from "../droplink";
 import SignUpLogInForm from "../login";
 import { useCookies } from 'react-cookie';
-
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
 
     const [cookies,] = useCookies(['username', 'sessionId']);
 
-    const LnkStyle = "hover:bg-hoverBg rounded-[10px] py-1 px-4 active:bg-activeBg";
-
+    const LnkStyle = ({isActive}) => (isActive ? "your-element text-white rounded-[10px] px-2 transition duration-300 easy-ease-in-out" : 
+    "your-element text-gray-400 hover:text-white rounded-[10px] px-2 transition duration-300 easy-ease-in-out") 
+    
     return (
         <>
             <div className="container lg:px-8 mx-auto text-headerLinks mt-2 sm:mt-7 text-2xl font-semibold">
@@ -20,8 +21,8 @@ const Header = () => {
                             <img src={crypto} className="h-[30px]" alt="логотип" />
                             <p className='text-center text-[22px] font-[600]'>NotNull Company</p>
                         </div> */}
-                        <Link to="/" className={LnkStyle}>Главная</Link>
-                        <Link to="/about" className={LnkStyle}>О нас</Link>
+                        <NavLink to="/" className={LnkStyle}>Главная</NavLink>
+                        <NavLink to="/about" className={LnkStyle}>О нас</NavLink>
                     </div>
 
                     <div className='space-x-2 flex'>
