@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    background-color: #c91d61;
+    background: linear-gradient(270deg, #01acde, #c5d201, #f59a00, #e30613, #c91d61);
+    background-size: 1000% 1000% !important;
+    -webkit-animation: changeColors 30s ease infinite;
+    -moz-animation: changeColors 30s ease infinite;
+    -o-animation: changeColors 30s ease infinite;
+    animation: changeColors 30s ease infinite;
+    display: block;
+}
+
+@-webkit-keyframes changeColors {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
