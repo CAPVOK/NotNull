@@ -2,20 +2,33 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { Accordion } from "../modules/components/accordion";
 import { useSelector } from "react-redux";
-import { Response } from "../modules/assets/response";
 
 export const Broker = () => {
     const brokerName = useParams().broker;
+    const navigate = useNavigate();
+
     const request = useSelector((state) => {
         return state.request.requests.find((item)=>
             item.header.sender === brokerName
         )
     })
-    const navigate = useNavigate();
 
-    const response  = Response.response;
+    const response = useSelector((state)=>state.request.response.response);
+    const rows = response.status.advStatus.data.rows;
+    const fields = response.status.advStatus.fields;
+
+
+    console.log('fields')
+    console.log(fields)
+    console.log('rows')
+    console.log(rows)
+    const sort = () => {
+        return (<>
+            
+        </>)
+    }
+    
     const bord = "border-2 border-gray-300"
-
     /* bg-gradient-to-br from-white/30 to-white/20 backdrop-blur-md */
     return (
         <div className="min-h-[95vh] mt-5 w-11/12 p-0 pt-5 sm:p-5 mx-auto bg-transparent rounded-xl ">
@@ -36,7 +49,7 @@ export const Broker = () => {
                 {/* <div className="mx-5">Status: Undefainded</div> */}
             </div>
             {/* response */}
-            <div className="w-full mt-5">
+            {/* <div className="w-full mt-5">
                 <table className={`text-white w-full ${bord}`}>
             <thead>
             <tr className= {`text-white ${bord}`}>
@@ -77,19 +90,19 @@ export const Broker = () => {
                 </th>}
             </tbody>
             </table>
-            </div>
+            </div> */}
             {/* list */}
             <div className="flex flex-col p-3 text-xl text-white">
-            {
+            {/* {
                 request && 
                 request.request.supportedCommands.map((command, key) => {
                     return (
                         <div key={key} className="">
-                            <Accordion /* key={key} */ id={command.alias} sender={brokerName}/>
+                            <Accordion id={command.alias} sender={brokerName}/>
                         </div>
                     )
                 })
-            }
+            } */}
             </div>
         </div>
     )
