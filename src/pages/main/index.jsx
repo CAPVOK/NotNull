@@ -4,7 +4,7 @@ import { Bitcoin } from "../modules/components/bitcoin"
 import { useEffect, useRef, useState } from "react";
 import { over } from 'stompjs';
 import SockJS from 'sockjs-client';
-import { saveConnect, saveRequests, addRequests } from "../modules/core/Slice";
+import { saveConnect, saveRequests, addRequests, saveResponse } from "../modules/core/Slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from 'react-cookie';
 import { api } from "../modules/core/api";
@@ -30,7 +30,7 @@ export const Main = () => {
     };
     const getStatus = (payload) => { // слушаем сервер 
         const Status = JSON.parse(payload.body);
-        console.log(Status);
+        dispatch(saveResponse(Status));
     };
 
     const onError = () => {

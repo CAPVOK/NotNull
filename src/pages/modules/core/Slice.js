@@ -4,12 +4,14 @@ export const profileSlice = createSlice({
     name: 'profile',
     initialState: {
         requests: [],
+        response: null,
         isConnected: false,
         messageId: 0,
     },
     reducers: {
         saveConnect: (state, action) => {state.isConnected = action.payload},
         saveRequests: (state, action) => {state.requests = action.payload},
+        saveResponse: (state, action) => {state.response = action.payload},
         addRequests: (state, action) => {
             state.requests.push(action.payload);
         },
@@ -22,6 +24,6 @@ export const profileSlice = createSlice({
     }
 })
 
-export const { saveConnect, saveRequests, cleanRequests, incrementMessage, addRequests} = profileSlice.actions
+export const { saveConnect, saveRequests, cleanRequests, incrementMessage, addRequests, saveResponse} = profileSlice.actions
 
 export default profileSlice.reducer
