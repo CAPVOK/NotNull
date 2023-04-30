@@ -1,15 +1,23 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { incrementMessage } from '../../core/Slice';
+import { useCookies } from 'react-cookie';
 
 export const Accordion = ({ id, sender }) => {
     const [showInputs, setShowInputs] = useState(false);
     const [formData, setFormData] = useState({});
+    const [cookies,] = useCookies(['username', 'sessionId']);
+
+    const dispatch = useDispatch();
+    const currentMessage = useSelector((state)=>state.request.messageId);
 
     const request = useSelector((state) => {
         return state.request.requests.find((item) => item.header.sender === sender)
             .request.supportedCommands.find((item) => item.alias === id);
     });
+
+    const getReciever = useSelector((state) => {
+        return state.request.requests.find((item) => item.header.sender === sender).header.receiver});
 
     const toggleInputs = () => {
         setShowInputs(!showInputs);
@@ -24,7 +32,11 @@ export const Accordion = ({ id, sender }) => {
     };
 
     function Send() {
-        console.log(JSON.stringify(formData));
+        const header = {'sender': cookies.sessionId, 'data': new Date(0), 'reciever': getReciever, 'messageId': currentMessage };
+        const response = JSON.stringify({header: header, request: formData});
+        
+        console.log(JSON.parse(response));
+        dispatch(incrementMessage());
     }
 
     const dataType = (key) => {
